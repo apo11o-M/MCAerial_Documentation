@@ -1,17 +1,7 @@
-# Welcome to MCAerial Mod Documentation
+# Welcome to MCAerial Mod Documentation!!
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This is the documentation for the MCAerial Mod, Minecraft, and Forge. You can find this document at [GitHub](https://github.com/apo11o-M/MCAerial_Documentation).
 
-## Commands
+It's intention is a note for myself as I learned & progress throughout minecraft modding, and it captures my best explanations and practices on those topics.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+I also posted some of the most helpful guides and tutorials I found throughout the internet in the bottom of this page. Be sure to check them out!!
