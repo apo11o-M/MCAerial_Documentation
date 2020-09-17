@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Getting Started &mdash; MCAerial Documentation</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> MCAerial Documentation</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Home</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Concepts</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/registry/">Registries</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/initialization/">Initialization</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/sides/">Sides</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Blocks</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../blocks/blocks/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Items</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../items/items/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Entities</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../entities/entities/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Rendering Entities</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/gettingstarted/">Getting Started</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/renderclass/">Render Class</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/partialticks/">Partial Ticks</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/models/">Models</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/textures/">Textures</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">GUIs</button>
+<ul class="subnav">
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Getting Started</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#do-you-need-an-iinventory">Do you need an IInventory</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#do-you-need-a-container">Do you need a Container</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#do-you-need-a-guicontainer">Do you need a GuiContainer</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#do-you-need-an-iguihandler">Do you need an IGuiHandler</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#do-you-need-a-tileentity">Do you need a TileEntity</a></li>
+</ul></li>
+    <li class="toctree-l2"><a class="nav-item" href="../implementingclasses/">Implementing Classes</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Events</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../events/eventhandlers/">EventHandlers</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Networking</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Exporting</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../exporting/exporting/">Exporting</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Guides & Links</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../guides/guides/">Guides</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/apo11o-M/MCAerial_Documentation/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../../rendering/textures/">&laquo; Previous</a></div>
+    <div class="next"><a href="../implementingclasses/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> MCAerial Documentation</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>GUIs</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="getting-started">Getting Started</h1>
+<p>Making blocks with guis can be confusing because there are several things that have to work together. More importantly, you may not need all the complexity depending on what you are trying to achieve.</p>
+<p>Before you start, you should know what kind of classes you would/might have to implement.</p>
+<h2 id="do-you-need-an-iinventory">Do you need an <code>IInventory</code></h2>
+<p>This class holds the information about any stuffs (items or blocks) that are contained inside the block. For example when you put a stack of coal into the furnace it is going into the block's inventory.</p>
+<h2 id="do-you-need-a-container">Do you need a <code>Container</code></h2>
+<p>If your block have an <code>IInventory</code> or a custom gui then <code>Container</code> class is a must. It helps combining the inventories and sync them between the client and the server.</p>
+<h2 id="do-you-need-a-guicontainer">Do you need a <code>GuiContainer</code></h2>
+<p>This is where the actual "gui stuff" goes. This class handles the rendering of your custom gui textures, and handles the gui buttons on screen.</p>
+<h2 id="do-you-need-an-iguihandler">Do you need an <code>IGuiHandler</code></h2>
+<p>If you use a <code>Container</code> then <code>IGuiHandler</code> class is a must. It helps creating network packets to sync up the containers on the client and the server. The <code>IGuiHandler</code> also needs a unique GUI ID passed to it as a parameter, so I suggest creating an enum to help manage these IDs.</p>
+<h2 id="do-you-need-a-tileentity">Do you need a <code>TileEntity</code></h2>
+<p>A tile entity is like a variation of a regular block with IInventory. It is particularly useful if you want to gui to continue to do something even when it isn't open. For example a furnace will continue to cook something even if you are not in the gui.</p>
+<p>Examples where no tile entity is needed:</p>
+<ul>
+<li>A simple block that just displays some information in the GUI, like maybe a sign that displays your mod's credits or help info.</li>
+<li>A block where the processing happens instantaneously like a crafting table.</li>
+</ul>
+<p>Examples where a tile entity is recommended:
+- A block where processing happens over time like cooking in a furnace.</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../../rendering/textures/" title="Textures"><span>Previous</span></a></div>
+        <div class="next"><a href="../implementingclasses/" title="Implementing Classes"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>

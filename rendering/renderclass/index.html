@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Render Class &mdash; MCAerial Documentation</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> MCAerial Documentation</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Home</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Concepts</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/registry/">Registries</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/initialization/">Initialization</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/sides/">Sides</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Blocks</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../blocks/blocks/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Items</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../items/items/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Entities</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../entities/entities/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Rendering Entities</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../gettingstarted/">Getting Started</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Render Class</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#renderplayer">RenderPlayer</a></li>
+</ul></li>
+    <li class="toctree-l2"><a class="nav-item" href="../partialticks/">Partial Ticks</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../models/">Models</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../textures/">Textures</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">GUIs</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../guis/gettingstarted/">Getting Started</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../guis/implementingclasses/">Implementing Classes</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Events</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../events/eventhandlers/">EventHandlers</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Networking</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Exporting</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../exporting/exporting/">Exporting</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Guides & Links</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../guides/guides/">Guides</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/apo11o-M/MCAerial_Documentation/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../gettingstarted/">&laquo; Previous</a></div>
+    <div class="next"><a href="../partialticks/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> MCAerial Documentation</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>Rendering Entities</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="render-class">Render Class</h1>
+<p>The purpose of the rendering class is to render the model and the texture of the entity. The <code>doRender</code> method is mainly responsible for that.</p>
+<p>The model's rotation is done by using <code>GlStatemanager.rotate(angle, x, y, z)</code>. Note the angle is in degrees, and the <code>x</code>, <code>y</code>, and <code>z</code> field indicates which axis the model rotates. Ex. <code>GlStatemanager.rotate(90F, 0.0F, 1.0F, 0.0F)</code> means rotate 90 degrees clockwise about the y axis.</p>
+<h2 id="renderplayer">RenderPlayer</h2>
+<p>The pivot point of the player's model is located in the center of the feet, and if one want to change the pivot point, translate the model first, do the rotation, and then translate back. The player model dimension can be found <a href="https://www.reddit.com/r/Minecraft/comments/143xdt/how_tall_is_steve/">here</a>.</p>
+<p>One thing to note is that when the program run <code>GlStateManager.pushMatrix()</code> in your <code>RenderPlayerEvent.Pre</code> event, all of the "virtual" axis minecraft did previously will be reseted (<a href="https://en.wikipedia.org/wiki/Euler_angles">Euler Angle Explained</a>), so if we want to rotate the player's model in the pitch and roll direction, we will have to rotate the model in the corresponding yaw angle first, do the pitch and roll, and then undo the yaw rotation we did by rotating in the reverse direction.</p>
+<p>Also, be sure to have a variable that indicates the program to pop the matrix in the <code>RenderPlayerEvent.Post</code> event. Popping the matrix in the <code>RenderPlayerEvent.Pre</code> event will cause GLStackUnderflow error.</p>
+<p>So the entire player model rotation process in the <code>RenderPlayerEvent.Pre</code> event looks like this:
+  1. pushMatrix
+  2. rotate in the yaw direction for the virtual axis
+  3. translate the model to its pivot point
+  4. do your pitch &amp; roll rotation
+  5. translate the model back
+  6. undo step two by applying the same rotation but in opposite direction  </p>
+<p><a href="https://bedrockminer.jimdofree.com/modding-tutorials/advanced-modding/vanilla-rendering/">Bedrock_Miner</a> has a detailed guide on using <code>GlStateManager</code> class</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../gettingstarted/" title="Getting Started"><span>Previous</span></a></div>
+        <div class="next"><a href="../partialticks/" title="Partial Ticks"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>
