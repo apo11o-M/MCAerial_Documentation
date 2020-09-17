@@ -1,5 +1,42 @@
+# If you add a page, you must add it to the index here
 site_name: MCAerial Documentation
-nav: 
+nav:
     - Home: index.md
-    - About: about.md
-theme: readthedocs
+    - Concepts:
+      - Registries: concepts/registry.md
+      - Initialization: concepts/initialization.md
+      - Sides: concepts/sides.md
+    - Blocks:
+      - Home: blocks/blocks.md
+    - Items:
+      - Home: items/items.md
+    - Entities:
+      - Home: entities/entities.md
+    - Rendering Entities:
+      - Getting Started: rendering/gettingstarted.md
+      - Render Class: rendering/renderclass.md
+      - Partial Ticks: rendering/partialticks.md
+      - Models: rendering/models.md
+      - Textures: rendering/textures.md
+    - GUIs:
+      - Getting Started: guis/gettingstarted.md
+      - Implementing Classes: guis/implementingclasses.md
+    - Events:
+      - EventHandlers: events/eventhandlers.md
+    - Networking:
+      - Concepts: networking/concepts.md
+      - Simplelmpl: networking/simplelmpl.md
+    - Exporting:
+      - Exporting: exporting/exporting.md
+    - Guides & Links:
+      - Guides: guides/guides.md
+
+repo_url: https://github.com/apo11o-M/MCAerial_Documentation
+
+theme:
+  name: ivory
+  custom_dir: 'custom_theme/'
+
+plugins:
+  - search
+  - pheasant

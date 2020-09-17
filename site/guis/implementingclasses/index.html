@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <title>Implementing Classes &mdash; MCAerial Documentation</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    <link rel="stylesheet" href="../../css/pheasant.css">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script> 
+</head>
+
+<body ontouchstart="">
+    <div id="container">
+        <aside>
+            <div class="home">
+                <div class="title">
+                    <button class="hamburger"></button>
+                    <a href="../.." class="site-name"> MCAerial Documentation</a>
+                </div>
+                <div class="search">
+                    <div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+    </form>
+</div>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul class="root">
+                    <li class="toctree-l1"><a class="nav-item" href="../..">Home</a></li>
+                    <li class="toctree-l1"><button class="section nav-item">Concepts</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/registry/">Registries</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/initialization/">Initialization</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../concepts/sides/">Sides</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Blocks</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../blocks/blocks/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Items</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../items/items/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Entities</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../entities/entities/">Home</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Rendering Entities</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/gettingstarted/">Getting Started</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/renderclass/">Render Class</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/partialticks/">Partial Ticks</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/models/">Models</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../rendering/textures/">Textures</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">GUIs</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../gettingstarted/">Getting Started</a></li>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Implementing Classes</a>
+<ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#iinventory">IInventory</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#container">Container</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#guicontainer">GuiContainer</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#iguihandler">IGuiHandler</a></li>
+</ul></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Events</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../events/eventhandlers/">EventHandlers</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Networking</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Exporting</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../exporting/exporting/">Exporting</a></li>
+</ul></li>
+                    <li class="toctree-l1"><button class="section nav-item">Guides & Links</button>
+<ul class="subnav">
+    <li class="toctree-l2"><a class="nav-item" href="../../guides/guides/">Guides</a></li>
+</ul></li>
+                </ul>
+            </nav>
+            <div class="repo">
+    <div class="link">
+        <a href="https://github.com/apo11o-M/MCAerial_Documentation/" class="fa fa-github"> GitHub</a>
+    </div>
+    <div class="previous"><a href="../gettingstarted/">&laquo; Previous</a></div>
+    <div class="next"><a href="../../events/eventhandlers/">Next &raquo;</a></div>
+</div>
+        </aside>
+        <div id="spacer"><button class="arrow"></button></div>
+        <main>
+            <div class="home-top">
+                <button class="hamburger"></button>
+                <a href="../.." class="site-name"> MCAerial Documentation</a>
+            </div>
+            <div id="main">
+                <nav class="breadcrumbs">
+<ul>
+    <li>GUIs</li>
+</ul>
+</nav>
+                <div id="content">
+<h1 id="implementing-classes">Implementing Classes</h1>
+<h2 id="iinventory"><code>IInventory</code></h2>
+<p>This is fairly simple as we typically just need to extend the existing IInventory classes such as the <code>InventoryCraftingResult</code> or the <code>InventoryEnderChest</code>. The <code>IInventory</code> class is essentially a list that stores a bunch of <code>ItemStacks</code> and with many other helper methods that manipulates the list.</p>
+<h2 id="container"><code>Container</code></h2>
+<p>As stated above, this is the class than handles the interactions between the player(client) and the server.</p>
+<p>In the constructor we creates <code>Slots</code> using the <code>addSlotToContainer()</code> method and link the slot to the block's and player's inventory. The slots are the translucent boxes you see when you hover your mouse over some of the container block's guis. It is capable to connect with both the player's and the block's inventory. Note that we also have to specify the on-screen position of the slot.</p>
+<p>One thing to note is the <code>transferStackInSlot()</code> method. It has to be implemented by the modders since the inherited method doesn't do anything. This method is called when the player wants to move an itemstack from one slot to another. This includes left clicks and shift-clicks. Failure to consider the possibilities would result in weird inventory behaviors such as itemstacks disappearing or even mc stuck in a infinite for loop.</p>
+<h2 id="guicontainer"><code>GuiContainer</code></h2>
+<p>This class specifies the layout of the gui, render the background images, retrives items and progress bars for display, amd more.</p>
+<p>There are multiple gui drawing methods in the <code>GUI</code> class, and each of them have different usages and parameters. For my texture I am using the <code>drawModalRectWithCustomSizedTexture()</code> since my texture size is not the minecraft default 176x166 pixels texture size.</p>
+<p>I also suggest using GNU Image Manipulation Program (GIMP) or Adobe Photoshop to create your gui textures. You can also go into minecraft's source code, find the original png textures and start from there. It would save you tons of time if you have a template to start with.</p>
+<p>To add buttons to the gui, we have to initialize it in the <code>initGui()</code> method, create an if block with the button's id, and perform the actions for each buttons.</p>
+<p>It's also important to not offset the textures and buttons by absolute pixels, but rather use proportions based on the screen size. This is because each person has different monitor/screen sizes, and different UI size settings. If we uses absolute pixels to off set their position it's very easy to mess up the entire layout for a different window size setting.</p>
+<p>Warning: This class only runs on the CLIENT SIDE, so if you want to do stuff that would relate to the server side such as adding items into certain slots, you would have to send a packet to the server side and add the item over there or else your gui would have desyncing issues. I have an example of setting up packets and IMessages in <a href="https://github.com/apo11o-M/MCAerial_Mod/tree/master/src#networking">Networking</a>.</p>
+<h2 id="iguihandler"><code>IGuiHandler</code></h2>
+<p>The IGuiHandler provides the Synchronization of the slot contents between the server and client and lets you avoid having to create custom packets. Basically it provides an association between the Container on the server side and the GuiScreen on the client side.</p>
+<p>The class check the enumerated ID that is passed into the methods and return the associated element (Container on the server side, or GuiScreen on the client side).</p></div>
+                <footer>
+    <div class="footer-buttons">
+        <div class="previous"><a href="../gettingstarted/" title="Getting Started"><span>Previous</span></a></div>
+        <div class="next"><a href="../../events/eventhandlers/" title="EventHandlers"><span>Next</span></a></div>
+    </div>
+    <div class="footer-note">
+        <p>
+            Built with <a href="http://www.mkdocs.org">MkDocs</a> using
+            <a href="https://github.com/daizutabi/mkdocs-ivory">Ivory theme</a>.
+        </p>
+    </div>
+</footer>
+            </div>
+        </main>
+    </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/pheasant.js"></script>
+    <script src="../../search/main.js"></script>
+</body>
+
+</html>
