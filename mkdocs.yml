@@ -1,6 +1,8 @@
 # If you add a page, you must add it to the index here
 site_name: MCAerial Documentation
-docs_dir: docs/
+site_description: 'MCAerial Mod Documentation'
+site_author: 'Rick W'
+
 repo_url: https://github.com/apo11o-M/MCAerial_Documentation
 
 nav:
@@ -36,7 +38,7 @@ nav:
 
 theme:
   name: ivory
-  #custom_dir: 'custom_theme/'
+  custom_dir: 'custom_theme/'
 
 plugins:
   - search
