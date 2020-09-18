@@ -88,7 +88,7 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl (Packets)</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
 <ul class="subnav">
@@ -124,23 +124,25 @@
 <h1 id="getting-started">Getting Started</h1>
 <p>Making blocks with guis can be confusing because there are several things that have to work together. More importantly, you may not need all the complexity depending on what you are trying to achieve.</p>
 <p>Before you start, you should know what kind of classes you would/might have to implement.</p>
-<h2 id="do-you-need-an-iinventory">Do you need an <code>IInventory</code></h2>
+<h2 id="do-you-need-an-iinventory">Do you need an IInventory</h2>
 <p>This class holds the information about any stuffs (items or blocks) that are contained inside the block. For example when you put a stack of coal into the furnace it is going into the block's inventory.</p>
-<h2 id="do-you-need-a-container">Do you need a <code>Container</code></h2>
+<h2 id="do-you-need-a-container">Do you need a Container</h2>
 <p>If your block have an <code>IInventory</code> or a custom gui then <code>Container</code> class is a must. It helps combining the inventories and sync them between the client and the server.</p>
-<h2 id="do-you-need-a-guicontainer">Do you need a <code>GuiContainer</code></h2>
-<p>This is where the actual "gui stuff" goes. This class handles the rendering of your custom gui textures, and handles the gui buttons on screen.</p>
-<h2 id="do-you-need-an-iguihandler">Do you need an <code>IGuiHandler</code></h2>
+<h2 id="do-you-need-a-guicontainer">Do you need a GuiContainer</h2>
+<p>This is where the actual "gui stuff" goes. This class handles the rendering of your custom gui textures, and handles the gui buttons on screen. If you are making a custom gui, you would most likely need this class.</p>
+<h2 id="do-you-need-an-iguihandler">Do you need an IGuiHandler</h2>
 <p>If you use a <code>Container</code> then <code>IGuiHandler</code> class is a must. It helps creating network packets to sync up the containers on the client and the server. The <code>IGuiHandler</code> also needs a unique GUI ID passed to it as a parameter, so I suggest creating an enum to help manage these IDs.</p>
-<h2 id="do-you-need-a-tileentity">Do you need a <code>TileEntity</code></h2>
+<h2 id="do-you-need-a-tileentity">Do you need a TileEntity</h2>
 <p>A tile entity is like a variation of a regular block with IInventory. It is particularly useful if you want to gui to continue to do something even when it isn't open. For example a furnace will continue to cook something even if you are not in the gui.</p>
 <p>Examples where no tile entity is needed:</p>
 <ul>
 <li>A simple block that just displays some information in the GUI, like maybe a sign that displays your mod's credits or help info.</li>
 <li>A block where the processing happens instantaneously like a crafting table.</li>
 </ul>
-<p>Examples where a tile entity is recommended:
-- A block where processing happens over time like cooking in a furnace.</p></div>
+<p>Examples where a tile entity is recommended:</p>
+<ul>
+<li>A block where processing happens over time like cooking in a furnace.</li>
+</ul></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../../rendering/textures/" title="Textures"><span>Previous</span></a></div>

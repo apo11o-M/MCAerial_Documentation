@@ -68,6 +68,9 @@
     <li class="toctree-l2"><a class="nav-item" href="../partialticks/">Partial Ticks</a></li>
     <li class="toctree-l2 current"><a class="nav-item current" href="./">Models</a>
 <ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#blockbench">Blockbench</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#json-models">JSON Models</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#java-models">Java Models</a></li>
 </ul></li>
     <li class="toctree-l2"><a class="nav-item" href="../textures/">Textures</a></li>
 </ul></li>
@@ -83,7 +86,7 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl (Packets)</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
 <ul class="subnav">
@@ -117,9 +120,16 @@
 </nav>
                 <div id="content">
 <h1 id="model-files-java-obj-files">Model Files (.java &amp; .obj files)</h1>
-<p>A model is simply, a shape. Most models in minecraft mods you found online are .json files with a few using .obj files as .obj is older and doesn’t support many features like animation, materials and lights.</p>
-<p>I also suggest downloading the JSON Editor Plugin from Eclipse marketplace. The plugin will highlight your syntax errors in the json files. Otherwise it will be like editing a plain text file with no highlights which is a pain to troubleshoot.</p>
-<p>// show the syntaxes?</p></div>
+<p>A model is simply, a 3D shape that defines the outline of the object. There are a lot of model file formats out there, and the one that you see the most common in minecraft are .json, .java, and .obj file types.</p>
+<h2 id="blockbench">Blockbench</h2>
+<p><a href="https://blockbench.net/">Blockbench</a> is a simple yet powerful 3D modeling program designed specifically for minecraft modding. I highly suggest using this program to make your own models if you haven't have experience in other types of 3D modeling softwares.</p>
+<h2 id="json-models">JSON Models</h2>
+<p>JSON files are the most common and the most simple 3D model format you see in minecraft.</p>
+<p>This file type defines the model for all the blocks and items in vanilla minecraft. It also specifies all the stuff about this model such as the offsets, rotations, and scales in many different sceneraios. Such as when the player is holding in right hand, when it's being rendered in the inventory, when it's being dropped onto the ground, etc.</p>
+<p>I suggest downloading the JSON Editor Plugin from Eclipse marketplace. The plugin will highlight your syntax errors in the json files. Otherwise it will be like editing a plain text file with no highlights which is a pain to troubleshoot.</p>
+<h2 id="java-models">Java Models</h2>
+<p>Java models are specifically for entity models. It's made using Blockbench. </p>
+<p>Note: be sure to <em>group</em> your cubes and <em>rename</em> them when you are working on the model in Blockbench or else they won't show up in minecraft!!</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../partialticks/" title="Partial Ticks"><span>Previous</span></a></div>

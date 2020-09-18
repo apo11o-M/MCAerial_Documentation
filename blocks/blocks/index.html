@@ -53,7 +53,9 @@
 <ul class="subnav">
     <li class="toctree-l2 current"><a class="nav-item current" href="./">Home</a>
 <ul class="subnav">
-<li class="toctree-l3"><a class="nav-item toc" href="#itemblock">ItemBlock</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#not-full-blocks">Not-Full Blocks</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#transparent-blocks">Transparent blocks</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#itemblock-class">ItemBlock Class</a></li>
 </ul></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Items</button>
@@ -84,7 +86,7 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl (Packets)</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
 <ul class="subnav">
@@ -120,11 +122,24 @@
 <h1 id="blocks">Blocks</h1>
 <p>For simple blocks (think of cobblestone, dirt, grass, wood, etc.) which do not need any special functionality or attributes, a custom class is not necessary. It’s also recommended to create a general block class for your mod for reasons mentioned above.</p>
 <p>If you want more functionality (such as interactions with players) then a custom class is required. The <code>Block</code> class has many methods that you can implement to your custom block class.</p>
-<p>One thing to note about blocks is the boundary boxes(hitbox). if one wants to create a block that has a smaller bounding box than a regular full block such as half slabs, then in the block class one would have to declare a new object called <code>AxisAlignedBB</code> and override the <code>getBoundingBox()</code> method to return the <code>AxisAlignedBB</code> field you just declared.</p>
-<h2 id="itemblock">ItemBlock</h2>
+<h2 id="not-full-blocks">Not-Full Blocks</h2>
+<p>Sometimes we want to create blocks that are smaller and doesn't take the full-block space, such as half slabs or fences.</p>
+<p>To do so, we would have to declare a new object and override a few methods.</p>
+<ol>
+<li>First is to declare an <code>AxisAlignedBB</code> object like so: <code>public static final AxisAlignedBB CUSTOM_BLOCK = new AxisAlignedBB(minX, minY, minZ, maxX, maxY, maxZ);</code>. The object takes six arguments, the first three are the minimum coordinates (x, y, z) of the bounding box, and the last three are the maximum coordinates (x, y, z) of the bounding box. All of them are guaranteed to be less than 1 (if the argument is greater than 1 then it means the bounding box is bigger than a full block and weird things would happen).</li>
+<li>The second is to override the <code>getBoundingBox()</code> method to return the <code>CUSTOM_BLOCK</code> object we just created.</li>
+<li>And at last override the <code>isFullBlock()</code> method to return false.</li>
+</ol>
+<h2 id="transparent-blocks">Transparent blocks</h2>
+<p>So, how do we create transparent blocks? One way is to extend the minecraft <code>BlockGlass</code> class and call it done. Another way is to just override two methods, and we'll demonstrate that here.</p>
+<ul>
+<li>Override the <code>isOpaqueCube()</code> method and return false</li>
+<li>Override the <code>getBlockLayer()</code> method and return <code>BlockRenderLayer.CUTOUT</code></li>
+</ul>
+<p>And that's it. The player will now be able to see the stuff behind the block through the part of the texture that's <em>transparent</em>. It's very important for you to not color the part of the texture where you want to see through, or else it won't work.</p>
+<h2 id="itemblock-class">ItemBlock Class</h2>
 <p><code>ItemBlock</code> is a subclass of <code>Item</code> and has a field <code>block</code> that holds a reference to the block it presents.</p>
-<p>A block with <code>Block</code> class but not <code>ItemBlock</code> class will be impossible to hold in inventory. (like <code>minecraft:water</code> exists as a block but can’t hold in an inventory)</p>
-<p>A more detailed document can be found <a href="https://mcforge.readthedocs.io/en/1.12.x/blocks/blocks/">here</a>.</p></div>
+<p>A block with <code>Block</code> class but not <code>ItemBlock</code> class will be impossible to hold in inventory. (like <code>minecraft:water</code> exists as a block but can’t hold in an inventory)</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../../concepts/sides/" title="Sides"><span>Previous</span></a></div>
