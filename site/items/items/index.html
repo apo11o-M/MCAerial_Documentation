@@ -57,6 +57,7 @@
 <ul class="subnav">
     <li class="toctree-l2 current"><a class="nav-item current" href="./">Home</a>
 <ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#holding-the-item-right-click">Holding the Item Right Click</a></li>
 <li class="toctree-l3"><a class="nav-item toc" href="#common-issues">Common issue(s)</a></li>
 </ul></li>
 </ul></li>
@@ -84,7 +85,7 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl (Packets)</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
 <ul class="subnav">
@@ -119,6 +120,10 @@
                 <div id="content">
 <h1 id="items">Items</h1>
 <p>Basic items that do not need and special functionality or attributes do not need a custom class. It’s also recommended to create your mod’s general item class since you can put all your custom items and blocks into a dedicated tab in creative mode.</p>
+<h2 id="holding-the-item-right-click">Holding the Item Right Click</h2>
+<p>Sometimes we want to make something happen when the player is holding the item and right clicks on a block.</p>
+<p>To do so, we override the method <code>onItemUse()</code> which is called when the player right clicks the item on a block.</p>
+<p>In the MCAerial_Mod, I make the item spawn a glider on a block when it's being right clicked by using <code>worldIn.spawnEntity(new EntityPlane(worldIn, (double)pos.getX() + 0.5, (double)pos.getY() + 1, (double)pos.getZ() + 0.5));</code>. Note: Be sure to check the sides! Spawning entities should only happen on the server side or ghost entities would happen.</p>
 <h2 id="common-issues">Common issue(s)</h2>
 <p>You implemented the recipes but nothing shows up when you’re in the game. It’s possible that you did not specify the state of the blocks you're using (this mostly happens with stone, dirt, or colored wool as those blocks have different states). Simply add <code>"data": 0</code> to the end of the block id to and it should fix the issue. <code>"item": "minecraft:stone", "data": 0</code></p></div>
                 <footer>

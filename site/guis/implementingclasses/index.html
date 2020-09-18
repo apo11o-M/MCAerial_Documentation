@@ -87,7 +87,7 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl (Packets)</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
 <ul class="subnav">
@@ -121,20 +121,21 @@
 </nav>
                 <div id="content">
 <h1 id="implementing-classes">Implementing Classes</h1>
-<h2 id="iinventory"><code>IInventory</code></h2>
+<h2 id="iinventory">IInventory</h2>
 <p>This is fairly simple as we typically just need to extend the existing IInventory classes such as the <code>InventoryCraftingResult</code> or the <code>InventoryEnderChest</code>. The <code>IInventory</code> class is essentially a list that stores a bunch of <code>ItemStacks</code> and with many other helper methods that manipulates the list.</p>
-<h2 id="container"><code>Container</code></h2>
+<h2 id="container">Container</h2>
 <p>As stated above, this is the class than handles the interactions between the player(client) and the server.</p>
 <p>In the constructor we creates <code>Slots</code> using the <code>addSlotToContainer()</code> method and link the slot to the block's and player's inventory. The slots are the translucent boxes you see when you hover your mouse over some of the container block's guis. It is capable to connect with both the player's and the block's inventory. Note that we also have to specify the on-screen position of the slot.</p>
 <p>One thing to note is the <code>transferStackInSlot()</code> method. It has to be implemented by the modders since the inherited method doesn't do anything. This method is called when the player wants to move an itemstack from one slot to another. This includes left clicks and shift-clicks. Failure to consider the possibilities would result in weird inventory behaviors such as itemstacks disappearing or even mc stuck in a infinite for loop.</p>
-<h2 id="guicontainer"><code>GuiContainer</code></h2>
+<h2 id="guicontainer">GuiContainer</h2>
 <p>This class specifies the layout of the gui, render the background images, retrives items and progress bars for display, amd more.</p>
-<p>There are multiple gui drawing methods in the <code>GUI</code> class, and each of them have different usages and parameters. For my texture I am using the <code>drawModalRectWithCustomSizedTexture()</code> since my texture size is not the minecraft default 176x166 pixels texture size.</p>
+<p>There are multiple gui drawing methods in the <code>GUI</code> class, and each of them have different usages and parameters. For my texture I am using the <code>drawModalRectWithCustomSizedTexture()</code> since my gui texture size is not the default 176x166 pixels.</p>
 <p>I also suggest using GNU Image Manipulation Program (GIMP) or Adobe Photoshop to create your gui textures. You can also go into minecraft's source code, find the original png textures and start from there. It would save you tons of time if you have a template to start with.</p>
+<p>To find the original png textures from minecraft, go to your <code>minecraft folder -&gt; versions folder -&gt; 1.12.2 folder -&gt; 1.12.2.jar</code>, extract the .jar file into a folder, open the folder and go to <code>assets -&gt; minecraft -&gt; textures -&gt; container</code> and you will find the gui textures there.</p>
 <p>To add buttons to the gui, we have to initialize it in the <code>initGui()</code> method, create an if block with the button's id, and perform the actions for each buttons.</p>
-<p>It's also important to not offset the textures and buttons by absolute pixels, but rather use proportions based on the screen size. This is because each person has different monitor/screen sizes, and different UI size settings. If we uses absolute pixels to off set their position it's very easy to mess up the entire layout for a different window size setting.</p>
-<p>Warning: This class only runs on the CLIENT SIDE, so if you want to do stuff that would relate to the server side such as adding items into certain slots, you would have to send a packet to the server side and add the item over there or else your gui would have desyncing issues. I have an example of setting up packets and IMessages in <a href="https://github.com/apo11o-M/MCAerial_Mod/tree/master/src#networking">Networking</a>.</p>
-<h2 id="iguihandler"><code>IGuiHandler</code></h2>
+<p>It's also important to not offset the textures and buttons by absolute pixels, but rather use proportions based on the screen size. This is because each person has different monitor/screen sizes and different UI size settings. If we uses absolute pixels to offset their position it's very easy to mess up the entire layout for a different window size setting.</p>
+<p>Note: This class only runs on the <em>CLIENT SIDE</em>, so if you want to do stuff that would relate to the server side such as adding items into certain slots, you would have to send a packet to the server side and add the item over there or else your gui would have desyncing issues. I have an example of setting up packets and IMessages in <a href="https://apo11o-m.github.io/MCAerial_Documentation/networking/simplelmpl/">Networking</a>.</p>
+<h2 id="iguihandler">IGuiHandler</h2>
 <p>The IGuiHandler provides the Synchronization of the slot contents between the server and client and lets you avoid having to create custom packets. Basically it provides an association between the Container on the server side and the GuiScreen on the client side.</p>
 <p>The class check the enumerated ID that is passed into the methods and return the associated element (Container on the server side, or GuiScreen on the client side).</p></div>
                 <footer>

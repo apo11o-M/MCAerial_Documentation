@@ -83,7 +83,7 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl (Packets)</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
 <ul class="subnav">
@@ -117,8 +117,11 @@
 </nav>
                 <div id="content">
 <h1 id="partial-ticks">Partial Ticks</h1>
-<p>Another important concept about rendering is partial ticks. Entities update every 0.05 seconds(1 tick), but the rendering class updates every frame, which is about 60fps for a normal computer. If we only change the rotation for the model every 0.05 seconds then it will have an unpleasant stuttering/choppy effect. To fix this, we have to interpolate the rotating angle between the first frame and the second frame and rotate the model by that amount as the <code>doRender</code> method is called upon every frame in minecraft.</p>
-<p>// show how to do interpolateAngle() in the render class</p></div>
+<p>>> Partial ticks is a fractional value representing the <em>amount of time that has passed since the last tick.</em></p>
+<p>Another important concept about rendering is partial ticks. Minecraft updates it's game logic every ticks, or 0.05 seconds, but the rendering class updates every frame, which is about 60fps for a normal computer. Now if we only change the rotation for the model every 0.05 seconds then it will have an unpleasant stuttering/choppy rotation. (The reason it rotates every 0.05 seconds is because we are using the rotation angle from our custom entity class, which, only updates every ticks).</p>
+<p>To fix this, we have to <em>interpolate</em> the rotating angle between the first frame and the second frame and rotate the model by that amount as the <code>doRender()</code> method is called upon every frame in minecraft.</p>
+<p>So here's the basic formula on how to calculate the rotation angle using partial ticks:</p>
+<p>>> prevAngle + (angle - prevAngle) x partialTicks</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../renderclass/" title="Render Class"><span>Previous</span></a></div>

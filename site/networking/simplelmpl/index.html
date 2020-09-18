@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Rick W">
     <link rel="shortcut icon" href="../../img/favicon.ico">
-    <title>Simplelmpl &mdash; MCAerial Documentation</title>
+    <title>Simplelmpl (Packets) &mdash; MCAerial Documentation</title>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -81,8 +81,13 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../concepts/">Concepts</a></li>
-    <li class="toctree-l2 current"><a class="nav-item current" href="./">Simplelmpl</a>
+    <li class="toctree-l2 current"><a class="nav-item current" href="./">Simplelmpl (Packets)</a>
 <ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#packethandler-class">PacketHandler Class</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#imessages-packets">IMessages (Packets)</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#imessagehandler">IMessageHandler</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#okay-so-now-how-do-we-use-the-packets">okay, so now how do we use the packets?</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#example">Example</a></li>
 </ul></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
@@ -116,10 +121,104 @@
 </ul>
 </nav>
                 <div id="content">
-<h1 id="simplelmpl">Simplelmpl</h1>
+<h1 id="simplelmpl-packet-system">Simplelmpl (Packet System)</h1>
 <p>The client and server are always connected by a network connection(packets).</p>
-<p><a href="https://gist.github.com/apo11o-M/bec16b08a7cfa43e99820bbe625fec9b">Here's my guide</a> on how to setup SimpleImpl.</p>
-<p>// show the code in here.</p></div>
+<p>Simplelmpl is the name of the packet system we will be using. It's the easiest way to send custom data between the server and the client.</p>
+<h2 id="packethandler-class">PacketHandler Class</h2>
+<p>The first step is to create the <code>PacketHandler</code> class. And inside the class we declare a <code>SimpleNetworkWrapper</code> object as a static field.</p>
+<div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="java">public class PacketHandler {
+    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(&#34;yourModId&#34;.toUpperCase());
+    private static int nextPacketId = 0;
+
+    public static void initPackets() {
+        registerMessage(MyMessage.class, MyMessage.MyPacket.class);
+    }
+
+    private static void registerMessage(Class message, Class packet) {
+        INSTANCE.registerMessage(packet, message, nextPacketId, Side.CLIENT);
+        INSTANCE.registerMessage(packet, message, nextPacketId, Side.SERVER);
+        nextPacketId++;
+    }
+}</code></pre></div></div></div>
+
+<p>Notice that we also registered our classes using the <code>registerMessage</code> method. The <code>initPackets</code> method is being called during the <code>init</code> stage.</p>
+<p>To register our packet, simply call <code>INSTANCE.registerMessage(MyMessageHandler.class, MyMessage.class, 0, Side.Server);</code></p>
+<p>Let's breakdown the parameters of this method.</p>
+<ul>
+<li>The first parameter <code>messagehandler</code> is the class that handles your packet. Note that <em>this class must always have a default constructor</em>.</li>
+<li>The second parameter <code>requestMessageType</code> is your actual packet class. Note that <em>This class must also have a default constructor</em>.</li>
+<li>The third parameter <code>id</code> is the discriminator for the packet. This is a per-channel unique ID for the packet.</li>
+<li>The final parameter <code>side</code> is the side that your packet will <strong><em>received</em></strong> on. If you are planning to send the packet on both sides, then the packet have to be registered twice, once on each side.</li>
+</ul>
+<h2 id="imessages-packets">IMessages (Packets)</h2>
+<p>Now the next step is to create the packet itself. A packet is defined by using the <code>IMessage</code> interface. This interface defines 2 methods, <code>toBytes</code> and <code>fromBytes</code>. These methods, respectively, write and read the data in your packet to and from a <code>ByteBuf</code> object, which is an object used to hold a stream (array) of bytes which are sent through the network.</p>
+<p>Here's an example packet that's designed to send an int and a boolean through the network.</p>
+<div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="java">public class MyMessage implements IMessage {
+    private int simpleInt;
+    private boolean simpleBool;
+
+    // a default constructor that&#39;s always required otherwise you&#39;ll get errors
+    public MyMessage() {}
+
+    public MyMessage(int simpleInt, boolean simpleBool) {
+        this.simpleInt = simpleInt;
+        this.simpleBool = simpleBool;
+    }
+
+    @Override
+    public void fromBytes(ByteBuf buf) {
+        // reads the int back from the buf. Note if you have multiple values, you must read in the same order you wrote.
+        this.simpleInt = buf.getInt(0);
+        this.SimpleBool = buf.getBoolean(1);
+    }
+
+    @Override
+    public void toBytes(ByteBuf buf) {
+        // writes the int into the buf
+        buf.writeInt(this.simpleInt);
+        buf.writeBoolean(this.simpleBool);
+    }
+}</code></pre></div></div></div>
+
+<h2 id="imessagehandler">IMessageHandler</h2>
+<p>Now, how do we use the packet? Well, first we have to have a class that <em>handles</em> the packet. This is created with the IMessageHandler interface.</p>
+<p>It's recommended to make the <code>IMessageHandler</code> class inside the <code>IMessage</code> class. Note that if this is done, the inner class has to be declared as <code>static</code>.</p>
+<p>In this example we want to give a certain amount of diamonds to the player based on the int we received.</p>
+<div class="pheasant-fenced-code"><div class="cell embed source"><div class="code"><pre><code class="java">public static class MyIMessageHandler implements IMessageHandler&lt;MyMessage, IMessage&gt; {
+
+    public MyPacket() {}
+    // do whatever stuff you want based on the parameters you recieved
+    // in this case I&#39;m using the forge&#39;s documentation example, giving the player some diamonds
+    @Override
+    public IMessage onMessage(MyMessage message, MessageContext ctx) {
+      // This is the player the packet was sent to the server from
+      EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
+      // the value that was sent
+      int amount = message.toSend;
+      // Execute the action on the main server thread by adding it as a scheduled task
+      Minecraft.getMinecraft().addScheduledTask(() -&gt; {
+              serverPlayer.inventory.addItemStackToInventory(new ItemStack(Items.DIAMOND, amount));
+      });
+      // no response packet
+      return null;
+    }
+}</code></pre></div></div></div>
+
+<h2 id="okay-so-now-how-do-we-use-the-packets">okay, so now how do we use the packets?</h2>
+<h3 id="sending-to-the-server">Sending to the Server</h3>
+<p>There is only one way to send packets to server, since there will only be one server to send to.</p>
+<p>To do so, simply call <code>PacketHandler.INSTANCE.sendToServer(new MyMessage(toSend))</code>. The message will then be sent to the Side.SERVER IMessageHandler for its type.</p>
+<h3 id="sending-to-the-client">Sending to the Client</h3>
+<p>There are four ways of sending packets to clients:</p>
+<ol>
+<li><code>sendToAll</code> - This will send the packet to every single player on the server. No matter what location or dimension they are in.</li>
+<li><code>sendToDimension</code> - This method takes two arguments: <code>IMessage</code>, and an int. The dimension int can be obtained through <code>world.provider.getDimension()</code>. The packet will be sent to all players in that dimension.</li>
+<li><code>sendToAllAround</code> - This method takes the <code>IMessage</code> and <code>NetworkRegistry.TargetPoint</code> object. All players within the <code>TargetPoint</code> will have the packet be sent to them. A <code>TargetPoint</code> object requires a dimension, x/y/z coordinates, and a range. It represents a sphere with radius of range, centered at (x, y, z) in a world.</li>
+<li><code>sendTo</code> - This send the packet to the specific player. Note that the player object has to be casted into <code>EntityPlayerMP</code>.</li>
+<li><code>sendToAllTracking</code> - Last but not least, there is also <code>INSTANCE.sendToAllTracking</code> which sends packets to all players on the server who are “tracking” the target. There are two variants of <code>sendToAllTracking</code>: one accepts a <code>TargetPoint</code>, and another one accepts an <code>Entity</code>. For the former, all clients that has the block located at <code>TargetPoint</code> loaded will receive the packet; for the latter, all clients that are within the tracking range of supplied <code>Entity</code> will receive the packet. Do note that <code>EntityPlayers</code> will not track themselves, so this cannot replace the use of <code>sendTo</code>; if the <code>EntityPlayer</code> that is used as target also requires syncing, you need to call <code>sendTo</code> on that before calling the <code>Entity</code> version of <code>sendToAllTracking</code>.</li>
+</ol>
+<h2 id="example">Example</h2>
+<p><strong><em><a href="https://gist.github.com/apo11o-M/bec16b08a7cfa43e99820bbe625fec9b">So basically the result networking stuff would look something like this.</a></em></strong></p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../concepts/" title="Concepts"><span>Previous</span></a></div>

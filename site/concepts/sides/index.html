@@ -84,7 +84,7 @@
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
 <ul class="subnav">
     <li class="toctree-l2"><a class="nav-item" href="../../networking/concepts/">Concepts</a></li>
-    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl</a></li>
+    <li class="toctree-l2"><a class="nav-item" href="../../networking/simplelmpl/">Simplelmpl (Packets)</a></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Exporting</button>
 <ul class="subnav">
@@ -121,11 +121,11 @@
 <p>The minecraft code can be divided into two "sides" - Client and Server
   - The Server side is responsible for running the game logic (mob spawning, weather, updating inventories, health, AI, etc), maintaining the master copy of the world - updating the blocks and entities based on packets received from the client, and sending updated information to all the clients.
   - The Client side is primarily responsible for reading input from the player and for rendering the screen.</p>
-<p>In a minecraft single player world, there is one server and one client both running in your computer. In multiplayer mode, there is one server but with multiple clients(players) connect to it.</p>
-<p>In order to distinguish between client and server, you use the boolean check <code>world.isRemote</code> to check sides. If the field is <code>true</code>, the world is currently running on the logical client. If the field is <code>false</code>, then the world is running on the logical server.</p>
+<p>In a minecraft single player world, there is one server and one client both running in your computer. In multiplayer mode, there is one server but with multiple clients (players) connect to it.</p>
+<p>In order to distinguish between the client and server, you use the boolean check <code>world.isRemote</code> to check sides. If the field is <code>true</code>, the world is currently running on the logical client. If the field is <code>false</code>, then the world is running on the logical server.</p>
 <h2 id="now-you-may-ask-why-do-we-need-to-check-the-sides">Now you may ask: <em>why do we need to check the sides?</em></h2>
 <p>It's because we have to ensure that the game logic and other mechanics only runs on the server side, such as damaging the player every time they walk on your block, or have your machine process dirt into diamonds. Applying game logic to the client side could cause desynchronization (ghost entities, desynchronized stats, disappearing items, etc) in the lightest case, and crashes in the worst case.</p>
-<p>More details can be found on <a href="http://greyminecraftcoder.blogspot.com/2013/10/client-server-communication-using.html">here</a>.</p></div>
+<p>GreyMinecraftCoder has an indepth explanation on this topic. <a href="http://greyminecraftcoder.blogspot.com/2013/10/client-server-communication-using.html">The Client &lt;--&gt; Server Division</a></p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../initialization/" title="Initialization"><span>Previous</span></a></div>
