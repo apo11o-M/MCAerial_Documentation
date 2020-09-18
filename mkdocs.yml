@@ -30,7 +30,7 @@ nav:
       - EventHandlers: events/eventhandlers.md
     - Networking:
       - Concepts: networking/concepts.md
-      - Simplelmpl: networking/simplelmpl.md
+      - Simplelmpl (Packets): networking/simplelmpl.md
     - Exporting:
       - Exporting: exporting/exporting.md
     - Guides & Links:

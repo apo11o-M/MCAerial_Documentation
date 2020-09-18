@@ -1,5 +1,5 @@
 # Very Helpful Guides/Links
-Here are some of the helpful guides that I found throughout the internet. Be sure to check them out!!
+Here are some of the most helpful guides that I found throughout the internet. Be sure to check them out!!
 
   - [Forge Documentation (1.12.2)](https://mcforge.readthedocs.io/en/1.12.x/) - The official Forge documentation for minecraft 1.12.2 version
 
@@ -11,4 +11,6 @@ Here are some of the helpful guides that I found throughout the internet. Be sur
 
   - [Minecraft Modding by Bedrock_Miner](https://bedrockminer.jimdofree.com/modding-tutorials/) - In depth guide that explains the concepts very well, but it's a bit outdated.
 
-  - [Blockbench](https://blockbench.net/) - A go-to 3D model editor
+  - [Blockbench](https://blockbench.net/) - My go-to 3D model editor for my blocks and entities.
+
+  - [GIMP](https://www.gimp.org/) - A free & open-source graphic editor used for image editing. I used this software to make textures for the items and the gui.

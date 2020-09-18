@@ -5,6 +5,6 @@ During startup, Forge will call your mod several times to add new blocks, items,
 
 - Initialization - Do your mod setup. Build whatever data structures you care about, and register recipes.
 
-- PostInitialization - Handle interaction with other mods.
+- PostInitialization - Handle interactions with other mods.
 
 PreInitialization is performed for all the mods you installed, followed by Initialization for all mods, followed by PostInitialization for all mods. Initializing the mods in `init()` is particularly useful when there might be interactions between multiple mods
