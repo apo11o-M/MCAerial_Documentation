@@ -78,6 +78,9 @@
 <ul class="subnav">
     <li class="toctree-l2 current"><a class="nav-item current" href="./">EventHandlers</a>
 <ul class="subnav">
+<li class="toctree-l3"><a class="nav-item toc" href="#create-an-event-handler">Create an Event Handler</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#using-event-handling-to-modify-vanilla-behavior">Using Event Handling To Modify Vanilla Behavior</a></li>
+<li class="toctree-l3"><a class="nav-item toc" href="#event-cancelation">Event Cancelation</a></li>
 </ul></li>
 </ul></li>
                     <li class="toctree-l1"><button class="section nav-item">Networking</button>
@@ -118,8 +121,23 @@
                 <div id="content">
 <h1 id="eventhandlers">EventHandlers</h1>
 <p>Minecraft Forge provides event buses that are extremely useful for modders. The general concept is that you create "event handling" methods that subscribe a particular event, and being fired every time that event happens.</p>
-<p>One example is the <code>PlayerUseItemEvent</code> where the player right clicks while holding an item. The dev can program that something happens when the player is holding a specific item and right clicks.</p>
-<p>Here's <a href="http://jabelarminecraft.blogspot.com/p/minecraft-forge-172-event-handling.html">Jabelar's guide</a> on Minecraft Event Handling.</p></div>
+<h2 id="create-an-event-handler">Create an Event Handler</h2>
+<p>General steps:</p>
+<ol>
+<li><strong>Create am event handling class</strong>, you can name it whatever you want.</li>
+<li><strong>Give your class the <code>@EventBusSubscriber</code> annotation</strong>. By doing this you don't need to actually register it, that will happen automatically!</li>
+<li>Put <code>public static void [your_event_name](Event)</code> methods in the your event handling class. Each method needs to have the <code>@SubscribeEvent</code> annotation and the parameter passed to the event must be the type of event you are trying to handle. The methods should contain your custom code to whatever you want when the event happens.</li>
+</ol>
+<p>Note: It is important to note that the event parameter passed usually has a number of <em>useful fields and methods</em> to aid your custom code.</p>
+<p>For more information see Jabelar's guide on <a href="http://jabelarminecraft.blogspot.com/p/minecraft-forge-172-event-handling.html">Minecraft Event Handling</a></p>
+<h2 id="using-event-handling-to-modify-vanilla-behavior">Using Event Handling To Modify Vanilla Behavior</h2>
+<p>For your own custom classes, you often don't need event handling because you already have the means of controlling their behavior. So event handling is most useful for the purpose of changing the behavior of "vanilla" blocks, items, entities, world generation, etc.</p>
+<p>Note: Before implementing event handling you should first check to see if there are already <em>public methods and fields</em> available to you.  For example, changing a texture of a block or changing the motion of an entity can be done with public methods. Even though events could be used for these examples, it is probably easiest to use the provided methods.</p>
+<h3 id="preferable-to-not-use-event-handling-in-custom-classes">(Preferable To Not Use) Event Handling In Custom Classes</h3>
+<p>If you make your own classes, especially as extending existing blocks, items or entities, you already have access to <code>@Override</code> several methods that are actually event handlers.  Many of these methods are named starting with "on", like <code>onUpdate()</code>. These methods are automatically called at the same time as the related events are posted and so don't need to be called or otherwise handled.</p>
+<h2 id="event-cancelation">Event Cancelation</h2>
+<p>It is especially important to understand is that certain events are "cancelable", which is usually annotated with <code>@Cancelable</code>. The cool thing about cancelable events is you can choose to prevent (i.e. cancel) the vanilla processing from happening at all: cancelable events allow you to fully replace the vanilla event handling with your own code!</p>
+<p><strong>Warning</strong>: One problem with event cancelation is that it will affect other mods as well and can cause event incompatibility. You can affect the order of handling using priority (described below) and for those at the same priority I believe the handlers will fire based on the order the mods are loaded (or more specifically in order they register the handlers which is usually during the FMLInitializationEvent so would be in order they are loaded).</p></div>
                 <footer>
     <div class="footer-buttons">
         <div class="previous"><a href="../../guis/implementingclasses/" title="Implementing Classes"><span>Previous</span></a></div>
