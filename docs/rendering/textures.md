@@ -1,6 +1,14 @@
 # Textures (.png files)
 The texture size must be a square and a power of 2, such as 16x16, 32x32, 64x64 etc.
 
+Also, for entities be sure to add the textures location to the render class so minecraft knows where your texture are.
+
+## Blockbench
+[Blockbench](https://blockbench.net/) also suppports making blocks and entities. Once you are finish making your model, export your project to .java models and a .png texture. 
+
+## GIMP
+The [GNU Image Manipulation Program (GIMP)](https://www.gimp.org/) is a very powerful free image editor that can even compete with photoshop. Be sure to check it out!!
+
 ## Common issues:
 
   - If one of the textures is broken, look at the json file. 90% of times a broken texture is because of a faulty json file.
